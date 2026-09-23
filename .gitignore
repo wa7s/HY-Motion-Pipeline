@@ -1,0 +1,39 @@
+# --- your own data: settings, clips, history ---------------------------------
+settings.json
+history.json
+history.json.*
+presets.json
+Projects/
+exports/
+backup/
+LOCAL_NOTES.md
+
+# --- characters that must not be redistributed ------------------------------
+# (the bundled Base_Male / Base_Female are CC0 and ARE published)
+Mannequin/*
+!Mannequin/Base_Male.fbx
+!Mannequin/Base_Female.fbx
+!Mannequin/Quaternius_License.txt
+!Mannequin/README.md
+
+# --- build output (publish the exe as a Release zip instead) ------------------
+HY Motion Studio/
+build/
+dist/
+*.spec
+*.zip
+
+# --- Python / tooling ---------------------------------------------------------
+app/.venv/
+.venv/
+__pycache__/
+*.pyc
+*.bak
+*.orig
+app/viewer/tmp/
+
+# --- older prototype, superseded by the Qt app -------------------------------
+app/MotionStudio.pyw
+
+# --- your private notes ---
+GITHUB_POSTING_GUIDE.md

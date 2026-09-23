@@ -1,0 +1,6 @@
+# HY Motion Studio's own window only. The AI models run inside your ComfyUI,
+# and the character work inside Blender - neither needs anything from here.
+PySide6>=6.7
+numpy>=1.26
+# only needed to build the .exe:
+pyinstaller>=6.6

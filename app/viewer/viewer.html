@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>HY Motion Studio Viewport</title>
+<style>
+  html, body { margin:0; padding:0; height:100%; overflow:hidden;
+               background:#393939; font-family:"Segoe UI",system-ui,sans-serif; }
+  #c { display:block; width:100%; height:100%; }
+  #hud { position:absolute; top:10px; left:12px; color:#c8c8c8; font-size:12px;
+         line-height:1.5; pointer-events:none; text-shadow:0 1px 2px #000; }
+  #msg { position:absolute; inset:0; display:flex; align-items:center;
+         justify-content:center; color:#9a9a9a; font-size:13px; text-align:center;
+         pointer-events:none; padding:24px; white-space:pre-wrap; }
+  .err { color:#ff8a5d !important; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud"></div>
+<div id="msg">No animation loaded.</div>
+
+<script>
+// Module scripts can fail to resolve without ever reaching the console in
+// QtWebEngine, which makes a broken viewport look like a silent no-op.
+// These two handlers make any such failure visible in the app log.
+window.addEventListener('error', function (e) {
+  var m = document.getElementById('msg');
+  m.textContent = 'Viewport error:\n' + (e.message || e.type);
+  m.className = 'err';
+  console.error('viewport error: ' + (e.message || e.type) +
+                ' @ ' + (e.filename || '?') + ':' + (e.lineno || 0));
+}, true);
+window.addEventListener('unhandledrejection', function (e) {
+  console.error('viewport rejection: ' + e.reason);
+});
+</script>
+
+<!-- No import map: the example modules were rewritten to import the local
+     three build by relative path, which QtWebEngine resolves reliably. -->
+<script type="module" src="./viewer.js"></script>
+</body>
+</html>
